@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="tos_icon.ico">
+  <title>Terms of Service</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: #888888;
+      line-height: 1.6;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #111111;
+      border: 1px solid #333333;
+      border-radius: 0px;
+      width: 90%;
+      max-width: 520px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .modal-header p {
+      font-size: 0.875rem;
+      color: #888888;
+      margin-bottom: 16px;
+    }
+
+    .scroll-hint {
+      font-size: 0.75rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      font-weight: 500;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-hint.hidden {
+      opacity: 0;
+    }
+
+    .tos-box {
+      flex: 1;
+      overflow-y: auto;
+      background: #000000;
+      border: 1px solid #222222;
+      border-radius: 0px;
+      padding: 16px;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #aaaaaa;
+      margin-bottom: 20px;
+    }
+
+    .tos-box p {
+      margin-bottom: 12px;
+    }
+
+    .tos-box strong {
+      color: #ffffff;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: #aaaaaa;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #ffffff;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"]:disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+    }
+
+    .btn-proceed {
+      padding: 12px 20px;
+      border-radius: 0px;
+      border: none;
+      background: #ffffff;
+      color: #000000;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn-proceed:hover:not(:disabled) {
+      background: #cccccc;
+    }
+
+    .btn-proceed:disabled {
+      background: #222222;
+      color: #555555;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="hero">
+    <h1>Welcome to Terms of Service</h1>
+    <p>A minimalist workspace designed to test out a Terms of Service agreement screen.</p>
+  </main>
+
+  <div class="modal-overlay" id="tosModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>Terms of Service</h2>
+        <p>Review the agreement below to continue.</p>
+      </div>
+
+      <div class="scroll-hint" id="scrollHint">
+        <span>↓ Scroll to the bottom to unlock checkbox</span>
+      </div>
+
+      <div class="tos-box" id="tosBox">
+        <p><strong>1. Introduction</strong><br>Welcome to the platform. By utilizing our software and features, you agree to follow the terms set forth here.</p>
+        <p><strong>2. Responsible Use</strong><br>You are expected to use all services in accordance with standard regulations. Unauthorized access, system tampering, or network abuse is prohibited.</p>
+        <p><strong>3. Account Control</strong><br>You maintain full responsibility for securing your account credentials and managing activity associated with your access key.</p>
+        <p><strong>4. Data Policy</strong><br>We process operational data in accordance with our strict data protection protocols. Information is stored securely without unauthorized external sharing.</p>
+        <p><strong>5. Intellectual Ownership</strong><br>All native assets, interface designs, code structures, and documentation remain the property of the site operator.</p>
+        <p><strong>6. Liability Limitations</strong><br>The service is provided on an as-is basis. We accept no liability for interruptions, lost data, or secondary issues resulting from usage.</p>
+        <p><strong>7. Account Termination</strong><br>Access rights may be restricted or revoked at any point if user conduct violates the terms defined within this document.</p>
+        <p><strong>8. Governing Law</strong><br>These provisions are governed by applicable legal standard practices without giving effect to conflicts of law principles.</p>
+        <p><strong>9. Complete Agreement</strong><br>You have reached the end of the document. Select the checkbox below to complete verification.</p>
+      </div>
+
+      <div class="controls">
+        <label class="checkbox-label">
+          <input type="checkbox" id="tosCheck" disabled>
+          I have read and agree to the Terms of Service
+        </label>
+        <button class="btn-proceed" id="proceedBtn" disabled>Proceed</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const modal = document.getElementById('tosModal');
+        modal.classList.add('active');
+      }, 3000);
+    });
+
+    const tosBox = document.getElementById('tosBox');
+    const tosCheck = document.getElementById('tosCheck');
+    const proceedBtn = document.getElementById('proceedBtn');
+    const scrollHint = document.getElementById('scrollHint');
+
+    let hasScrolledBottom = false;
+
+    tosBox.addEventListener('scroll', () => {
+      if (hasScrolledBottom) return;
+
+      const reachedBottom = tosBox.scrollTop + tosBox.clientHeight >= tosBox.scrollHeight - 10;
+      if (reachedBottom) {
+        hasScrolledBottom = true;
+        tosCheck.disabled = false;
+        scrollHint.classList.add('hidden');
+      }
+    });
+
+    tosCheck.addEventListener('change', () => {
+      proceedBtn.disabled = !(hasScrolledBottom && tosCheck.checked);
+    });
+
+    proceedBtn.addEventListener('click', () => {
+      const modal = document.getElementById('tosModal');
+      modal.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
